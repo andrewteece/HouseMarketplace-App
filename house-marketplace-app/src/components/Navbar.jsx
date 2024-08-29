@@ -1,7 +1,10 @@
 import { useNavigate, useLocation } from 'react-router-dom'
-import { ReactComponent as OfferIcon } from '../assets/svg/localOfferIcon.svg'
-import { ReactComponent as ExploreIcon } from '../assets/svg/exploreIcon.svg'
-import { ReactComponent as PersonOutlineIcon } from '../assets/svg/personOutlineIcon.svg'
+//import { ReactComponent as OfferIcon } from '../assets/svg/localOfferIcon.svg?react'
+//import { ReactComponent as ExploreIcon } from '../assets/svg/exploreIcon.svg?react'
+//import { ReactComponent as PersonOutlineIcon } from '../assets/svg/personOutlineIcon.svg?react'
+import OfferIcon from '../assets/svg/localOfferIcon.svg'
+import ExploreIcon from '../assets/svg/exploreIcon.svg'
+import PersonOutlineIcon from '../assets/svg/personOutlineIcon.svg'
 
 function Navbar() {
   const navigate = useNavigate()
