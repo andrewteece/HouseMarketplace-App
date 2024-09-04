@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom'
 import DeleteIcon from '../assets/svg/deleteIcon.svg'
 import EditIcon from '../assets/svg/editIcon.svg'
-import bedIcon from '../assets/svg/bedIcon.svg'
-import bathtubIcon from '../assets/svg/bathtubIcon.svg'
+import BedIcon from '../assets/svgjsx/BedIcon'
+import BathtubIcon from '../assets/svgjsx/BathtubIcon'
+//import bedIcon from '../assets/svg/bedIcon.svg'
+//import bathtubIcon from '../assets/svg/bathtubIcon.svg'
 
 function ListingItem({ listing, id, onEdit, onDelete }) {
   return (
@@ -12,7 +14,7 @@ function ListingItem({ listing, id, onEdit, onDelete }) {
         className='categoryListingLink'
       >
         <img
-          src={listing.imgUrls[0]}
+          src={listing.imageUrls[0]}
           alt={listing.name}
           className='categoryListingImg'
         />
@@ -23,7 +25,7 @@ function ListingItem({ listing, id, onEdit, onDelete }) {
           <p className='categoryListingPrice'>
             $
             {listing.offer
-              ? listing.discountPrice
+              ? listing.discountedPrice
                   .toString()
                   .replace(/\B(?=(\d{3})+(?!\d))/g, ',')
               : listing.regularPrice
@@ -32,13 +34,15 @@ function ListingItem({ listing, id, onEdit, onDelete }) {
             {listing.type === 'rent' && ' / Month'}
           </p>
           <div className='categoryListingInfoDiv'>
-            <img src={bedIcon} alt='bed' />
+            <BedIcon alt='bed' />
+
             <p className='categoryListingInfoText'>
               {listing.bedrooms > 1
                 ? `${listing.bedrooms} Bedrooms`
                 : '1 Bedroom'}
             </p>
-            <img src={bathtubIcon} alt='bath' />
+            <BathtubIcon alt='bath' />
+
             <p className='categoryListingInfoText'>
               {listing.bathrooms > 1
                 ? `${listing.bathrooms} Bathrooms`
