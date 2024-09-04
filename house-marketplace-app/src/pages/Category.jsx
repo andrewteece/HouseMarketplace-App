@@ -12,7 +12,7 @@ import {
 import { db } from '../firebase.config'
 import { toast } from 'react-toastify'
 import Spinner from '../components/Spinner'
-//import ListingItem from '../components/ListingItem'
+import ListingItem from '../components/ListingItem'
 
 function Category() {
   const [listings, setListings] = useState(null)
@@ -41,12 +41,12 @@ function Category() {
         const lastVisible = querySnap.docs[querySnap.docs.length - 1]
         setLastFetchedListing(lastVisible)
 
-        const listings = []
+        let listings = []
 
         querySnap.forEach((doc) => {
           return listings.push({
             id: doc.id,
-            data: doc.detail(),
+            data: doc.data(),
           })
         })
 
