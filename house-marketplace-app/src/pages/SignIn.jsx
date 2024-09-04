@@ -3,7 +3,7 @@ import { toast } from 'react-toastify'
 import { Link, useNavigate } from 'react-router-dom'
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 import ArrowRightIcon from '../assets/svg/keyboardArrowRightIcon.svg'
-import visibilityIcon from '../assets/svg/visibilityIcon.svg'
+import VisibilityIcon from '../assets/svg/visibilityIcon.svg'
 //import visibilityIcon from '../assets/svgjsx/visibilityIcon.jsx'
 //import visibilityIcon from '../assets/svgjsx/visibilityIcon'
 import OAuth from '../components/OAuth'
@@ -73,8 +73,7 @@ function SignIn() {
               onChange={onChange}
             />
 
-            <img
-              src={visibilityIcon}
+            <VisibilityIcon
               alt='show password'
               className='showPassword'
               onClick={() => setShowPassword((prevState) => !prevState)}
