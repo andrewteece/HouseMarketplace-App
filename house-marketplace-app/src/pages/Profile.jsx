@@ -15,8 +15,9 @@ import { db } from '../firebase.config'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 //import ListingItem from '../components/ListingItem'
-import arrowRight from '../assets/svg/keyboardArrowRightIcon.svg'
-import homeIcon from '../assets/svg/homeIcon.svg'
+//import arrowRight from '../assets/svg/keyboardArrowRightIcon.svg'
+import ArrowRightIcon from '../assets/svgjsx/ArrowRightIcon'
+import HomeIcon from '../assets/svgjsx/HomeIcon'
 
 function Profile() {
   const auth = getAuth()
@@ -150,9 +151,9 @@ function Profile() {
         </div>
 
         <Link to='/create-listing' className='createListing'>
-          <img src={homeIcon} alt='home' />
+          <HomeIcon alt='home' />
           <p>Sell or rent your home</p>
-          <img src={arrowRight} alt='arrow right' />
+          <ArrowRightIcon alt='arrow right' />
         </Link>
 
         {!loading && listings?.length > 0 && (
