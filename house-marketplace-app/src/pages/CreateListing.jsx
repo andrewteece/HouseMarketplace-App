@@ -9,7 +9,7 @@ import {
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore'
 import { db } from '../firebase.config'
 import { toast } from 'react-toastify'
-//import { v4 as uuidv4 } from 'uuid'
+import { v4 as uuidv4 } from 'uuid'
 import Spinner from '../components/Spinner'
 import { useNavigate } from 'react-router-dom'
 
@@ -93,7 +93,7 @@ function CreateListing() {
     if (geolocationEnabled) {
       const response = await fetch(
         `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${
-          import.meta.env.VITE_APP_GEOCODE_API
+          import.meta.env.API_KEY_GEOCODE
         }`
       )
 
@@ -101,6 +101,11 @@ function CreateListing() {
 
       geolocation.lat = data.results[0]?.geometry.location.lat ?? 0
       geolocation.lng = data.results[0]?.geometry.location.lng ?? 0
+
+      location =
+        data.status === 'ZERO_RESULTS'
+          ? undefined
+          : data.results[0]?.formatted_address
 
       if (location === undefined || location.includes('undefined')) {
         setLoading(false)
@@ -118,7 +123,7 @@ function CreateListing() {
         const storage = getStorage()
         const fileName = `${auth.currentUser.uid}-${image.name}-${uuidv4()}`
 
-        const storageRef = ref(storage, 'images/' + filename)
+        const storageRef = ref(storage, 'images/' + fileName)
 
         const uploadTask = uploadBytesResumable(storageRef, image)
 
