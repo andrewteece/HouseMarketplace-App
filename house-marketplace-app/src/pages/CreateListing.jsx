@@ -8,10 +8,10 @@ import {
 } from 'firebase/storage'
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore'
 import { db } from '../firebase.config'
+import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { v4 as uuidv4 } from 'uuid'
 import Spinner from '../components/Spinner'
-import { useNavigate } from 'react-router-dom'
 
 function CreateListing() {
   // eslint-disable-next-line
@@ -93,7 +93,7 @@ function CreateListing() {
     if (geolocationEnabled) {
       const response = await fetch(
         `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${
-          import.meta.env.API_KEY_GEOCODE
+          import.meta.env.VITE_MAP_API_KEY
         }`
       )
 
