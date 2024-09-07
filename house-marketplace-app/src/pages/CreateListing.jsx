@@ -285,7 +285,7 @@ function CreateListing() {
             </div>
           </div>
 
-          <label className='formLable'>Parkiing Spot</label>
+          <label className='formLabel'>Parkiing Spot</label>
           <div className='formButtons'>
             <button
               className={parking ? 'formButtonActive' : 'formButton'}
@@ -305,6 +305,32 @@ function CreateListing() {
               }
               type='button'
               id='parking'
+              value={false}
+              onClick={onMutate}
+            >
+              No
+            </button>
+          </div>
+
+          <label className='formLabel'>Furnished</label>
+          <div className='formButtons'>
+            <button
+              className={furnished ? 'formButtonActive' : 'formButton'}
+              type='button'
+              id='furnished'
+              value={true}
+              onClick={onMutate}
+            >
+              Yes
+            </button>
+            <button
+              className={
+                !furnished && furnished !== null
+                  ? 'formButtonActive'
+                  : 'formButton'
+              }
+              type='button'
+              id='furnished'
               value={false}
               onClick={onMutate}
             >
@@ -371,6 +397,21 @@ function CreateListing() {
             >
               No
             </button>
+          </div>
+
+          <label className='formLabel'>Regular Price</label>
+          <div className='formPriceDiv'>
+            <input
+              className='formInputSmall'
+              type='number'
+              id='regularPrice'
+              value={regularPrice}
+              onChange={onMutate}
+              min='50'
+              max='750000000'
+              required
+            />
+            {type === 'rent' && <p className='formPriceText'>$ / Month</p>}
           </div>
 
           <label className='formLabel'>Regular Price</label>
