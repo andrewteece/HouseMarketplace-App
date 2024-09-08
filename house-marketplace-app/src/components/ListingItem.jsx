@@ -3,8 +3,6 @@ import DeleteIcon from '../assets/svg/deleteIcon.svg'
 import EditIcon from '../assets/svg/editIcon.svg'
 import BedIcon from '../assets/svgjsx/BedIcon'
 import BathtubIcon from '../assets/svgjsx/BathtubIcon'
-//import bedIcon from '../assets/svg/bedIcon.svg'
-//import bathtubIcon from '../assets/svg/bathtubIcon.svg'
 
 function ListingItem({ listing, id, onEdit, onDelete }) {
   return (
@@ -14,7 +12,7 @@ function ListingItem({ listing, id, onEdit, onDelete }) {
         className='categoryListingLink'
       >
         <img
-          src={listing.imageUrls[0]}
+          src={listing.imgUrls[0]}
           alt={listing.name}
           className='categoryListingImg'
         />
