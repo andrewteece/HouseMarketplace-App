@@ -92,9 +92,7 @@ function CreateListing() {
 
     if (geolocationEnabled) {
       const response = await fetch(
-        `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${
-          import.meta.env.VITE_MAP_API_KEY
-        }`
+        `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyChVS1U--oe5Q2hA3kf13aBPJS5ChuOigY`
       )
 
       const data = await response.json()
@@ -205,6 +203,7 @@ function CreateListing() {
     if (!e.target.files) {
       setFormData((prevState) => ({
         ...prevState,
+        [e.target.id]: boolean ?? e.target.value,
       }))
     }
   }
@@ -285,7 +284,7 @@ function CreateListing() {
             </div>
           </div>
 
-          <label className='formLabel'>Parkiing Spot</label>
+          <label className='formLabel'>Parking Spot</label>
           <div className='formButtons'>
             <button
               className={parking ? 'formButtonActive' : 'formButton'}
@@ -414,7 +413,7 @@ function CreateListing() {
             {type === 'rent' && <p className='formPriceText'>$ / Month</p>}
           </div>
 
-          <label className='formLabel'>Regular Price</label>
+          <label className='formLabel'>Discounted Price</label>
           <div className='formPriceDiv'>
             <input
               className='formInputSmall'
