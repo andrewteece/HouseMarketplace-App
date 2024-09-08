@@ -11,6 +11,8 @@ import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
 import ForgotPassword from './pages/ForgotPassword'
 import CreateListing from './pages/CreateListing'
+//import EditListing from './pages/EditListing'
+//import Listing from './pages/Listing'
 
 function App() {
   return (
