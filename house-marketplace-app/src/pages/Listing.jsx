@@ -1,16 +1,20 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-import { MapContainer, Marker, Popup, Tilelayer } from 'react-leaflet';
-import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/swiper-bundle.css';
+import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import { getDoc, doc } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
 import { db } from '../firebase.config';
 import Spinner from '../components/Spinner';
 import shareIcon from '../assets/svg/shareIcon.svg';
-SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
+
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
 
 function Listing() {
   const [listing, setListing] = useState(null);
@@ -44,13 +48,20 @@ function Listing() {
       <Helmet>
         <title>{listing.name}</title>
       </Helmet>
-      <Swiper slidesPerView={1} pagination={{ clickable: true }}>
+      <Swiper
+        slidesPerView={1}
+        navigation
+        pagination={{ clickable: true }}
+        scrollbar={{ draggable: true }}
+        modules={[Navigation, Pagination, Scrollbar, A11y]}
+      >
         {listing.imgUrls.map((url, index) => (
           <SwiperSlide key={index}>
             <div
               style={{
                 background: `url(${listing.imgUrls[index]}) center no-repeat`,
                 backgroundSize: 'cover',
+                minHeight: '30rem',
               }}
               className='swiperSlideDiv'
             ></div>
@@ -115,7 +126,7 @@ function Listing() {
             zoom={13}
             scrollWheelZoom={false}
           >
-            <Tilelayer
+            <TileLayer
               attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
               url='https://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png'
             />

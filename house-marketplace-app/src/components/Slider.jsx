@@ -2,11 +2,19 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { collection, getDocs, query, orderBy, limit } from 'firebase/firestore';
 import { db } from '../firebase.config';
-import SwiperCore, { Navigation, Pagination, Scrollbar, Ally } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/swiper-bundle.css';
+//import SwiperCore, { Navigation, Pagination, Scrollbar, Ally } from 'swiper';
+//import { Swiper, SwiperSlide } from 'swiper/react';
+//import 'swiper/swiper-bundle.css';
 import Spinner from './Spinner';
-SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
+//SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
+
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
 
 function Slider() {
   const [loading, setLoading] = useState(true);
@@ -49,7 +57,13 @@ function Slider() {
       <>
         <p className='exploreHeading'>Recommended</p>
 
-        <Swiper slidesPerView={1} pagination={{ clickable: true }}>
+        <Swiper
+          slidesPerView={1}
+          navigation
+          pagination={{ clickable: true }}
+          scrollbar={{ draggable: true }}
+          modules={[Navigation, Pagination, Scrollbar, A11y]}
+        >
           {listings.map(({ data, id }) => {
             <SwiperSlide
               key={id}
@@ -59,6 +73,7 @@ function Slider() {
                 style={{
                   background: `url(${data.imgUrls[0]}) center no-repeat`,
                   backgroundSize: 'cover',
+                  minHeight: '30rem',
                 }}
                 className='swiperSlideDiv'
               >

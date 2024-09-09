@@ -1,8 +1,8 @@
-import { Link } from 'react-router-dom'
-import DeleteIcon from '../assets/svg/deleteIcon.svg'
-import EditIcon from '../assets/svg/editIcon.svg'
-import BedIcon from '../assets/svgjsx/BedIcon'
-import BathtubIcon from '../assets/svgjsx/BathtubIcon'
+import { Link } from 'react-router-dom';
+import DeleteIcon from '../assets/svg/deleteIcon.svg';
+import EditIcon from '../assets/svg/editIcon.svg';
+import BedIcon from '../assets/svgjsx/BedIcon';
+import BathtubIcon from '../assets/svgjsx/BathtubIcon';
 
 function ListingItem({ listing, id, onEdit, onDelete }) {
   return (
@@ -12,7 +12,7 @@ function ListingItem({ listing, id, onEdit, onDelete }) {
         className='categoryListingLink'
       >
         <img
-          src={listing.imgUrls[0]}
+          src={listing.imageUrls[0]}
           alt={listing.name}
           className='categoryListingImg'
         />
@@ -60,7 +60,7 @@ function ListingItem({ listing, id, onEdit, onDelete }) {
 
       {onEdit && <EditIcon className='editIcon' onClick={() => onEdit(id)} />}
     </li>
-  )
+  );
 }
 
-export default ListingItem
+export default ListingItem;
