@@ -27,7 +27,7 @@ function Listing() {
 
   useEffect(() => {
     const fetchListing = async () => {
-      const docRef = doc(db, 'listing', params.listingId);
+      const docRef = doc(db, 'listings', params.listingId);
       const docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) {
@@ -55,11 +55,11 @@ function Listing() {
         scrollbar={{ draggable: true }}
         modules={[Navigation, Pagination, Scrollbar, A11y]}
       >
-        {listing.imgUrls.map((url, index) => (
+        {listing.imageUrls.map((url, index) => (
           <SwiperSlide key={index}>
             <div
               style={{
-                background: `url(${listing.imgUrls[index]}) center no-repeat`,
+                background: `url(${listing.imageUrls[index]}) center no-repeat`,
                 backgroundSize: 'cover',
                 minHeight: '30rem',
               }}
@@ -79,7 +79,7 @@ function Listing() {
           }, 2000);
         }}
       >
-        <img src={shareIcon} alt='' />
+        <img src={shareIcon} alt='share' />
       </div>
 
       {shareLinkCoped && <p className='linkCopied'>Link Copied!</p>}
